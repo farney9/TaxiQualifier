@@ -25,11 +25,10 @@ namespace Taxi.Web.Data
         {
             await _dataContext.Database.EnsureCreatedAsync();
             await CheckRolesAsync();
-            var admin = await CheckUserAsync("1010", "Juan", "Zuluaga", "farney9@gmail.com", "315 258 4641", "Calle Luna Calle Sol", UserType.Admin);
-            var driver = await CheckUserAsync("2020", "Juan", "Zuluaga", "farney9@outlook.com", "315 258 4641", "Calle Luna Calle Sol", UserType.Driver);
-            var user1 = await CheckUserAsync("3030", "Juan", "Zuluaga", "fcybercafe@gmail.com", "315 258 4641", "Calle Luna Calle Sol", UserType.User);
-            var user2 = await CheckUserAsync("4040", "Juan", "Zuluaga", "farneyjimenez178518@correo.itm.edu.co", "350 634 2747", "Calle Luna Calle Sol", UserType.User);
-
+            var admin = await CheckUserAsync("1010", "Farney", "Jimenez", "farney9@gmail.com", "315 258 4641", "Calle Luna Calle Sol", UserType.Admin);
+            var driver = await CheckUserAsync("2020", "Farney", "Jimenez Driver", "farney9@outlook.com", "315 258 4641", "Calle Luna Calle Sol", UserType.Driver);
+            var user1 = await CheckUserAsync("3030", "Farney", "Jimenez Passager", "fcybercafe@gmail.com", "315 258 4641", "Calle Luna Calle Sol", UserType.User);
+            var user2 = await CheckUserAsync("4040", "Farney", "Jimenez", "farneyjimenez178518@correo.itm.edu.co", "350 634 2747", "Calle Luna Calle Sol", UserType.User);
             await CheckTaxisAsync(driver, user1, user2);
         }
 
@@ -107,7 +106,6 @@ namespace Taxi.Web.Data
                     }
                 });
 
-
                 _dataContext.Taxis.Add(new TaxiEntity
                 {
                     Plaque = "THW321",
@@ -136,7 +134,6 @@ namespace Taxi.Web.Data
                         }
                     }
                 });
-
 
                 await _dataContext.SaveChangesAsync();
             }
