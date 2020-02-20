@@ -5,6 +5,15 @@ body {
     padding-bottom: 20px;
 }
 
+
+ /*New styles Farney based BMD*/
+.table .thead-dark th {
+    color: #fff;
+    background-color: #343a40;
+    border-color: #454d55
+}
+
+
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
