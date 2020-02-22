@@ -4,16 +4,15 @@ using Prism.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Taxi.Prism.ViewModels
 {
-    public class MainPageViewModel : ViewModelBase
+    public class GroupPageViewModel : ViewModelBase
     {
-        public MainPageViewModel(INavigationService navigationService)
+        public GroupPageViewModel(INavigationService navigationService)
             : base(navigationService)
         {
-            Title = "Main Page";
+            Title = "Admin my groups";
         }
     }
 }

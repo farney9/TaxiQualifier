@@ -3,15 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Taxi.Common", "Taxi.Common\Taxi.Common.csproj", "{0C4752CF-0572-4334-BEAD-80CC06EC961A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Taxi.Common", "Taxi.Common\Taxi.Common.csproj", "{0C4752CF-0572-4334-BEAD-80CC06EC961A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Taxi.Web", "Taxi.Web\Taxi.Web.csproj", "{B970C1BD-04DA-4D4E-BD78-1F041734024D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Taxi.Web", "Taxi.Web\Taxi.Web.csproj", "{B970C1BD-04DA-4D4E-BD78-1F041734024D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Taxi.Prism", "Taxi.Prism\Taxi.Prism\Taxi.Prism.csproj", "{BB0CF2F4-A119-42EE-A4E3-19BEDB42123C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Taxi.Prism", "Taxi.Prism\Taxi.Prism\Taxi.Prism.csproj", "{BB0CF2F4-A119-42EE-A4E3-19BEDB42123C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Taxi.Prism.Android", "Taxi.Prism\Taxi.Prism.Android\Taxi.Prism.Android.csproj", "{F7E841B0-E635-49D6-BBDE-2B3246BDA4F5}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Taxi.Prism.iOS", "Taxi.Prism\Taxi.Prism.iOS\Taxi.Prism.iOS.csproj", "{D5E4A0B8-F5C3-4D84-9DEB-1FE28E75F143}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Taxi.Cross.Android", "Taxi.Cross.Android\Taxi.Cross.Android.csproj", "{B9DB8A76-4105-4005-8B08-49A40BAAD8FE}"
 EndProject
@@ -139,26 +137,6 @@ Global
 		{F7E841B0-E635-49D6-BBDE-2B3246BDA4F5}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{F7E841B0-E635-49D6-BBDE-2B3246BDA4F5}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 		{F7E841B0-E635-49D6-BBDE-2B3246BDA4F5}.Release|iPhoneSimulator.Deploy.0 = Release|Any CPU
-		{D5E4A0B8-F5C3-4D84-9DEB-1FE28E75F143}.Ad-Hoc|Any CPU.ActiveCfg = Ad-Hoc|iPhone
-		{D5E4A0B8-F5C3-4D84-9DEB-1FE28E75F143}.Ad-Hoc|iPhone.ActiveCfg = Ad-Hoc|iPhone
-		{D5E4A0B8-F5C3-4D84-9DEB-1FE28E75F143}.Ad-Hoc|iPhone.Build.0 = Ad-Hoc|iPhone
-		{D5E4A0B8-F5C3-4D84-9DEB-1FE28E75F143}.Ad-Hoc|iPhoneSimulator.ActiveCfg = Ad-Hoc|iPhoneSimulator
-		{D5E4A0B8-F5C3-4D84-9DEB-1FE28E75F143}.Ad-Hoc|iPhoneSimulator.Build.0 = Ad-Hoc|iPhoneSimulator
-		{D5E4A0B8-F5C3-4D84-9DEB-1FE28E75F143}.AppStore|Any CPU.ActiveCfg = AppStore|iPhone
-		{D5E4A0B8-F5C3-4D84-9DEB-1FE28E75F143}.AppStore|iPhone.ActiveCfg = AppStore|iPhone
-		{D5E4A0B8-F5C3-4D84-9DEB-1FE28E75F143}.AppStore|iPhone.Build.0 = AppStore|iPhone
-		{D5E4A0B8-F5C3-4D84-9DEB-1FE28E75F143}.AppStore|iPhoneSimulator.ActiveCfg = AppStore|iPhoneSimulator
-		{D5E4A0B8-F5C3-4D84-9DEB-1FE28E75F143}.AppStore|iPhoneSimulator.Build.0 = AppStore|iPhoneSimulator
-		{D5E4A0B8-F5C3-4D84-9DEB-1FE28E75F143}.Debug|Any CPU.ActiveCfg = Debug|iPhone
-		{D5E4A0B8-F5C3-4D84-9DEB-1FE28E75F143}.Debug|iPhone.ActiveCfg = Debug|iPhone
-		{D5E4A0B8-F5C3-4D84-9DEB-1FE28E75F143}.Debug|iPhone.Build.0 = Debug|iPhone
-		{D5E4A0B8-F5C3-4D84-9DEB-1FE28E75F143}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
-		{D5E4A0B8-F5C3-4D84-9DEB-1FE28E75F143}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
-		{D5E4A0B8-F5C3-4D84-9DEB-1FE28E75F143}.Release|Any CPU.ActiveCfg = Release|iPhone
-		{D5E4A0B8-F5C3-4D84-9DEB-1FE28E75F143}.Release|iPhone.ActiveCfg = Release|iPhone
-		{D5E4A0B8-F5C3-4D84-9DEB-1FE28E75F143}.Release|iPhone.Build.0 = Release|iPhone
-		{D5E4A0B8-F5C3-4D84-9DEB-1FE28E75F143}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
-		{D5E4A0B8-F5C3-4D84-9DEB-1FE28E75F143}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
 		{B9DB8A76-4105-4005-8B08-49A40BAAD8FE}.Ad-Hoc|Any CPU.ActiveCfg = Release|Any CPU
 		{B9DB8A76-4105-4005-8B08-49A40BAAD8FE}.Ad-Hoc|Any CPU.Build.0 = Release|Any CPU
 		{B9DB8A76-4105-4005-8B08-49A40BAAD8FE}.Ad-Hoc|Any CPU.Deploy.0 = Release|Any CPU
