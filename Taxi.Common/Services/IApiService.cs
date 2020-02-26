@@ -6,5 +6,6 @@ namespace Taxi.Common.Services
     public interface IApiService
     {
         Task<Response> GetTaxiAsync(string plaque, string urlBase, string servicePrefix, string controller);
+        Task<bool> CheckConnectionAsync(string url);
     }
 }
