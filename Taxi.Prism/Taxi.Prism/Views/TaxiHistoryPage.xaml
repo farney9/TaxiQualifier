@@ -3,7 +3,9 @@
     x:Class="Taxi.Prism.Views.TaxiHistoryPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
     xmlns:prism="http://prismlibrary.com"
+    xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
     Title="{Binding Title}"
     prism:ViewModelLocator.AutowireViewModel="True">
     <ContentPage.Resources>
@@ -17,74 +19,104 @@
         </Style>
         <Style TargetType="Label">
             <Setter Property="FontAttributes" Value="Bold" />
-            <!--<Setter Property="FontSize" Value="48" />-->
             <Setter Property="HorizontalOptions" Value="Center" />
         </Style>
     </ContentPage.Resources>
 
-    <StackLayout Padding="5">
-        <StackLayout Orientation="Horizontal">
-            <Label Text="Plaque" VerticalOptions="Center" />
-            <Entry
-                HorizontalOptions="FillAndExpand"
-                Placeholder="Enter plaque..."
-                Text="{Binding Plaque}"
-                VerticalOptions="Center" />
-            <Button Text="Check Plaque" />
-        </StackLayout>
-        <Label FontSize="48" Text="{Binding Taxi.Qualification, StringFormat='{0:N2}'}" />
-        <StackLayout Orientation="Horizontal">
-            <Label Text="Number of trips:" />
-            <Label Text="{Binding Taxi.NumberOfTrips, StringFormat='{0:N0}'}" />
-        </StackLayout>
-        <StackLayout Orientation="Horizontal">
-            <Label Text="Driver:" />
-            <Label Text="{Binding Taxi.User.FullName, StringFormat='{0:N0}'}" />
-        </StackLayout>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width=".8*" />
-                <ColumnDefinition Width=".5*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="48" />
-            </Grid.ColumnDefinitions>
-            <Label Grid.Column="0" Text="Start Date" />
-            <Label Grid.Column="1" Text="Score" />
-            <Label Grid.Column="2" Text="Remarks" />
-        </Grid>
+    <AbsoluteLayout>
+        <StackLayout Padding="5">
+            <StackLayout
+                Padding="5"
+                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                AbsoluteLayout.LayoutFlags="All">
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Plaque" VerticalOptions="Center" />
+                    <Entry
+                        HorizontalOptions="FillAndExpand"
+                        Placeholder="Enter plaque..."
+                        Text="{Binding Plaque}"
+                        VerticalOptions="Center" />
+                    <Button Text="Check Plaque" />
+                </StackLayout>
+                <rating:SfRating
+                    Margin="0,5"
+                    HorizontalOptions="Center"
+                    IsEnabled="False"
+                    IsVisible="{Binding IsShowStars}"
+                    Precision="Exact"
+                    Value="{Binding Taxi.Qualification}" />
+                <Label
+                    FontSize="Large"
+                    HorizontalOptions="Center"
+                    Text="{Binding Taxi.Qualification, StringFormat='Qualification: {0:N2}'}" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Number of trips:" />
+                <Label Text="{Binding Taxi.NumberOfTrips, StringFormat='{0:N0}'}" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Driver:" />
+                <Label Text="{Binding Taxi.User.FullName, StringFormat='{0:N0}'}" />
+            </StackLayout>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width=".8*" />
+                    <ColumnDefinition Width=".5*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="48" />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Text="Start Date" />
+                <Label Grid.Column="1" Text="Score" />
+                <Label Grid.Column="2" Text="Remarks" />
+            </Grid>
 
-        <CollectionView ItemsSource="{Binding Taxi.Trips}">
-            <CollectionView.ItemsLayout>
-                <GridItemsLayout Orientation="Vertical" />
-            </CollectionView.ItemsLayout>
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width=".8*" />
-                            <ColumnDefinition Width=".5*" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
-                        <Label
-                            Grid.Column="0"
-                            Text="{Binding StartDateLocal, StringFormat='{0:yyyy/MM/dd}'}"
-                            VerticalOptions="Center" />
-                        <Label
-                            Grid.Column="1"
-                            Text="{Binding Qualification, StringFormat='{0:N2}'}"
-                            VerticalOptions="Center" />
-                        <Label
-                            Grid.Column="2"
-                            Text="{Binding Remarks}"
-                            VerticalOptions="Center" />
-                        <Image Grid.Column="3" Source="ic_more_vert" />
-                    </Grid>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-    </StackLayout>
+            <CollectionView ItemsSource="{Binding Taxi.Trips}">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width=".8*" />
+                                <ColumnDefinition Width=".5*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Label
+                                Grid.Column="0"
+                                Text="{Binding StartDateLocal, StringFormat='{0:yyyy/MM/dd}'}"
+                                VerticalOptions="Center" />
+                            <Label
+                                Grid.Column="1"
+                                Text="{Binding Qualification, StringFormat='{0:N2}'}"
+                                VerticalOptions="Center" />
+                            <Label
+                                Grid.Column="2"
+                                Text="{Binding Remarks}"
+                                VerticalOptions="Center" />
+                            <Image Grid.Column="3" Source="ic_more_vert" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+        <busyindicator:SfBusyIndicator
+            Title="Loading..."
+            AbsoluteLayout.LayoutBounds=".5,.5,.5,.5"
+            AbsoluteLayout.LayoutFlags="All"
+            AnimationType="HorizontalPulsingBox"
+            BackgroundColor="#2194F3"
+            HorizontalOptions="Center"
+            IsVisible="{Binding IsRunning}"
+            TextColor="White"
+            VerticalOptions="Center"
+            ViewBoxHeight="80"
+            ViewBoxWidth="80" />
+    </AbsoluteLayout>
+
+
 </ContentPage>

@@ -11,6 +11,8 @@ namespace Taxi.Prism.ViewModels
         private readonly IApiService _apiService;
         private TaxiResponse _taxi;
         private DelegateCommand _checkPlaqueCommand;
+        private bool _isRunning;
+        private bool _isShowStars;
 
         public TaxiHistoryPageViewModel(
             INavigationService navigationService,
@@ -29,6 +31,9 @@ namespace Taxi.Prism.ViewModels
         public string Plaque { get; set; }
 
         public DelegateCommand CheckPlaqueCommand => _checkPlaqueCommand ?? (_checkPlaqueCommand = new DelegateCommand(CheckPlaqueAsync));
+
+        public bool IsRunning { get => _isRunning; set => SetProperty(ref _isRunning, value); }
+        public bool IsShowStars { get => _isShowStars; set => SetProperty(ref _isShowStars, value); }
 
         private async void CheckPlaqueAsync()
         {
@@ -51,8 +56,14 @@ namespace Taxi.Prism.ViewModels
                 return;
             }
 
+            IsRunning = true;
+            IsShowStars = false;
             string url = App.Current.Resources["UrlAPI"].ToString();
             Response response = await _apiService.GetTaxiAsync(Plaque, url, "api", "/Taxis");
+            IsRunning = false;
+            IsShowStars = true;
+
+
             if (!response.IsSuccess)
             {
                 await App.Current.MainPage.DisplayAlert(
