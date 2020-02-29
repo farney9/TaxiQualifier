@@ -104,6 +104,8 @@
                                 VerticalOptions="Center" />
                             <Label
                                 Grid.Column="2"
+                                LineBreakMode="TailTruncation"
+                                MaxLines="2"
                                 Text="{Binding Remarks}"
                                 VerticalOptions="Center" />
                             <Image Grid.Column="3" Source="ic_more_vert" />
