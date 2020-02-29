@@ -26,7 +26,7 @@ namespace Taxi.Web.Data
             await _dataContext.Database.EnsureCreatedAsync();
             await CheckRolesAsync();
             var admin = await CheckUserAsync("1010", "Farney", "Jimenez", "farney9@gmail.com", "315 258 4641", "Calle Luna Calle Sol", UserType.Admin);
-            var driver = await CheckUserAsync("2020", "Farney", "Jimenez Driver", "farney9@outlook.com", "315 258 4641", "Calle Luna Calle Sol", UserType.Driver);
+            var driver = await CheckUserAsync("2020", "Farney", "Jimenez", "farney9@outlook.com", "315 258 4641", "Calle Luna Calle Sol", UserType.Driver);
             var user1 = await CheckUserAsync("3030", "Farney", "Jimenez Passager", "fcybercafe@gmail.com", "315 258 4641", "Calle Luna Calle Sol", UserType.User);
             var user2 = await CheckUserAsync("4040", "Farney", "Jimenez", "farneyjimenez178518@correo.itm.edu.co", "350 634 2747", "Calle Luna Calle Sol", UserType.User);
             await CheckTaxisAsync(driver, user1, user2);
@@ -119,7 +119,7 @@ namespace Taxi.Web.Data
                             Qualification = 4.5f,
                             Source = "ITM Fraternidad",
                             Target = "ITM Robledo",
-                            Remarks = "Muy buen servicio",
+                            Remarks = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Auctor urna nunc id cursus metus. Imperdiet massa tincidunt nunc pulvinar. Facilisi cras fermentum odio eu. Aliquam vestibulum morbi blandit cursus risus at ultrices mi tempus. Netus et malesuada fames ac turpis egestas. Erat imperdiet sed euismod nisi. Id porta nibh venenatis cras sed felis eget velit. Eu volutpat odio facilisis mauris sit amet massa. Feugiat scelerisque varius morbi enim nunc. Magna etiam tempor orci eu lobortis elementum nibh tellus molestie. Senectus et netus et malesuada fames ac turpis egestas. Pulvinar pellentesque habitant morbi tristique senectus et netus. Ut ornare lectus sit amet. Arcu felis bibendum ut tristique et egestas quis ipsum suspendisse. Dictum varius duis at consectetur lorem donec. Cursus sit amet dictum sit amet justo donec. Facilisi etiam dignissim diam quis enim.",
                             User = user2
                         },
                         new TripEntity
@@ -129,7 +129,7 @@ namespace Taxi.Web.Data
                             Qualification = 4.8f,
                             Source = "ITM Robledo",
                             Target = "ITM Fraternidad",
-                            Remarks = "Conductor muy amable",
+                            Remarks = "Ut morbi tincidunt augue interdum velit. Diam ut venenatis tellus in metus vulputate eu scelerisque. Nunc vel risus commodo viverra maecenas accumsan. Quam pellentesque nec nam aliquam sem. Semper feugiat nibh sed pulvinar proin.",
                             User = user2
                         }
                     }
