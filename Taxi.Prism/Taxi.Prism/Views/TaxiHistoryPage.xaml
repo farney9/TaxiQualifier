@@ -7,19 +7,20 @@
     xmlns:prism="http://prismlibrary.com"
     xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
     Title="{Binding Title}"
-    prism:ViewModelLocator.AutowireViewModel="True">
+    prism:ViewModelLocator.AutowireViewModel="True"
+    BackgroundColor="{StaticResource ColorBackgroud}">
     <ContentPage.Resources>
         <Style TargetType="Button">
-            <Setter Property="BackgroundColor" Value="Navy" />
-            <Setter Property="CornerRadius" Value="20" />
-            <Setter Property="HeightRequest" Value="40" />
+            <Setter Property="Style" Value="{StaticResource SecondaryButton}" />
             <Setter Property="Margin" Value="10,0" />
-            <Setter Property="TextColor" Value="White" />
             <Setter Property="Command" Value="{Binding CheckPlaqueCommand}" />
         </Style>
         <Style TargetType="Label">
             <Setter Property="FontAttributes" Value="Bold" />
             <Setter Property="HorizontalOptions" Value="Center" />
+        </Style>
+        <Style TargetType="rating:SfRating">
+            <!--<Setter Property="RatingSettings"  rating:{}"/>-->
         </Style>
     </ContentPage.Resources>
 
@@ -44,7 +45,14 @@
                     IsEnabled="False"
                     IsVisible="{Binding IsShowStars}"
                     Precision="Exact"
-                    Value="{Binding Taxi.Qualification}" />
+                    Value="{Binding Taxi.Qualification}">
+                    <rating:SfRating.RatingSettings>
+                        <rating:SfRatingSettings
+                            RatedFill="{StaticResource ColorDanger}"
+                            RatedStroke="{StaticResource ColorBlack}"
+                            UnRatedFill="{StaticResource ColorSecondary}" />
+                    </rating:SfRating.RatingSettings>
+                </rating:SfRating>
                 <Label
                     FontSize="Large"
                     HorizontalOptions="Center"
@@ -109,10 +117,10 @@
             AbsoluteLayout.LayoutBounds=".5,.5,.5,.5"
             AbsoluteLayout.LayoutFlags="All"
             AnimationType="HorizontalPulsingBox"
-            BackgroundColor="#2194F3"
+            BackgroundColor="{StaticResource ColorDanger}"
             HorizontalOptions="Center"
             IsVisible="{Binding IsRunning}"
-            TextColor="White"
+            TextColor="{StaticResource ColorFontInverse}"
             VerticalOptions="Center"
             ViewBoxHeight="80"
             ViewBoxWidth="80" />

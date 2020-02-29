@@ -8,6 +8,40 @@
         <ResourceDictionary>
             <!--  Parameters  -->
             <x:String x:Key="UrlAPI">https://taxifar.azurewebsites.net/</x:String>
+            <!--  Colors  -->
+            <Color x:Key="ColorBackgroud">#F2BE22</Color>
+            <Color x:Key="ColorPrimary">#3726A6</Color>
+            <Color x:Key="ColorSecondary">#A6ABAB</Color>
+            <Color x:Key="ColorDanger">#F20505</Color>
+            <Color x:Key="ColorAccent">#4A44F2</Color>
+            <Color x:Key="ColorFont">#3726A6</Color>
+            <Color x:Key="ColorFontInverse">#FFFFFF</Color>
+            <Color x:Key="ColorBlack">#000000</Color>
+
+            <!--  Styles  -->
+            <Style TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource ColorAccent}" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="CornerRadius" Value="10" />
+                <Setter Property="TextColor" Value="{StaticResource ColorFontInverse}" />
+            </Style>
+
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource ColorBlack}" />
+            </Style>
+
+            <Style TargetType="Entry">
+                <Setter Property="BackgroundColor" Value="{StaticResource ColorFontInverse}" />
+            </Style>
+
+            <Style x:Key="SecondaryButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource ColorSecondary}" />
+            </Style>
+
+            <Style x:Key="DangerButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource ColorDanger}" />
+            </Style>
+
         </ResourceDictionary>
     </Application.Resources>
 </prism:PrismApplication>

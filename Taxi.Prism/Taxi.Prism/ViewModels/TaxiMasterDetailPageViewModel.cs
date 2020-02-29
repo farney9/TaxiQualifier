@@ -30,7 +30,7 @@ namespace Taxi.Prism.ViewModels
                 },
                 new Menu
                 {
-                    Icon = "ic_local_taxi",
+                    Icon = "ic_taxi",
                     PageName = "TaxiHistoryPage",
                     Title = "See taxi history"
                 },

@@ -6,15 +6,13 @@
     xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
     xmlns:prism="http://prismlibrary.com"
     Title="{Binding Title}"
-    prism:ViewModelLocator.AutowireViewModel="True">
+    prism:ViewModelLocator.AutowireViewModel="True"
+    BackgroundColor="{StaticResource ColorBackgroud}">
 
     <ContentPage.Resources>
         <Style TargetType="Button">
-            <Setter Property="BackgroundColor" Value="Green" />
-            <Setter Property="CornerRadius" Value="0" />
-            <Setter Property="HeightRequest" Value="40" />
+            <Setter Property="Style" Value="{StaticResource ColorPrimary}" />
             <Setter Property="Margin" Value="10,0" />
-            <Setter Property="TextColor" Value="White" />
         </Style>
     </ContentPage.Resources>
 
