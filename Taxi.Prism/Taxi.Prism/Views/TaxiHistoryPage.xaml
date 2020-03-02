@@ -19,9 +19,6 @@
             <Setter Property="FontAttributes" Value="Bold" />
             <Setter Property="HorizontalOptions" Value="Center" />
         </Style>
-        <Style TargetType="rating:SfRating">
-            <!--<Setter Property="RatingSettings"  rating:{}"/>-->
-        </Style>
     </ContentPage.Resources>
 
     <AbsoluteLayout>
@@ -48,7 +45,7 @@
                     Value="{Binding Taxi.Qualification}">
                     <rating:SfRating.RatingSettings>
                         <rating:SfRatingSettings
-                            RatedFill="{StaticResource ColorDanger}"
+                            RatedFill="{StaticResource ColorPrimary}"
                             RatedStroke="{StaticResource ColorBlack}"
                             UnRatedFill="{StaticResource ColorSecondary}" />
                     </rating:SfRating.RatingSettings>
@@ -81,13 +78,17 @@
                 <Label Grid.Column="2" Text="Remarks" />
             </Grid>
 
-            <CollectionView ItemsSource="{Binding Taxi.Trips}">
+            <CollectionView ItemsSource="{Binding Trips}">
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout Orientation="Vertical" />
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Grid>
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SelectTripCommand}" />
+                            </Grid.GestureRecognizers>
+
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width=".8*" />
                                 <ColumnDefinition Width=".5*" />
