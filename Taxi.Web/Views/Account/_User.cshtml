@@ -1,0 +1,52 @@
+﻿@model Taxi.Web.Models.EditUserViewModel
+
+<div class="form-group">
+    <div class="input-group input-group-lg mb-3">
+        <span class="input-group-addon"><i class="far fa-id-badge"></i></span>
+        <input asp-for="Document" class="form-control" placeholder="Document" aria-label="Document" aria-describedby="basic-addon1" />
+    </div>
+    <span asp-validation-for="Document" class="text-danger"></span>
+</div>
+
+<div class="form-group">
+    <div class="input-group input-group-lg mb-3">
+        <span class="input-group-addon"><i class="far fa-address-card"></i></span>
+        <input asp-for="FirstName" class="form-control" placeholder="FirstName" aria-label="FirstName" aria-describedby="basic-addon1" />
+    </div>
+    <span asp-validation-for="FirstName" class="text-danger"></span>
+</div>
+
+<div class="form-group">
+    <div class="input-group input-group-lg mb-3">
+        <span class="input-group-addon"><i class="far fa-address-card"></i></span>
+        <input asp-for="LastName" class="form-control" placeholder="LastName" aria-label="LastName" aria-describedby="basic-addon1" />
+    </div>
+    <span asp-validation-for="LastName" class="text-danger"></span>
+</div>
+
+<div class="form-group">
+    <div class="input-group input-group-lg mb-3">
+        <span class="input-group-addon"><i class="far fa-map-marker-alt"></i></span>
+        <input asp-for="Address" class="form-control" placeholder="Address" aria-label="Address" aria-describedby="basic-addon1" />
+    </div>
+    <span asp-validation-for="Address" class="text-danger"></span>
+</div>
+
+<div class="form-group">
+    <div class="input-group input-group-lg mb-3">
+        <span class="input-group-addon"><i class="far fa-mobile-alt"></i></span>
+        <input asp-for="PhoneNumber" class="form-control" placeholder="PhoneNumber" aria-label="PhoneNumber" aria-describedby="basic-addon1" />
+    </div>
+    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+</div>
+
+<div class="form-group">
+    <div class="input-group input-group-lg mb-3">
+        <span class="input-group-addon"><i class="far fa-portrait"></i></span>
+        <input asp-for="PictureFile" class="form-control" placeholder="PictureFile" type="file" aria-label="PictureFile" aria-describedby="basic-addon1" />
+    </div>
+    <span asp-validation-for="PictureFile" class="text-danger"></span>
+</div>
+
+
+
