@@ -4,6 +4,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+    xmlns:i18n="clr-namespace:Taxi.Prism.Helpers"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     xmlns:prism="http://prismlibrary.com"
     xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
@@ -16,6 +17,10 @@
             <Setter Property="Style" Value="{StaticResource SecondaryButton}" />
             <Setter Property="Margin" Value="10,0" />
             <Setter Property="Command" Value="{Binding CheckPlaqueCommand}" />
+            <Setter Property="BackgroundColor" Value="Navy" />
+            <Setter Property="CornerRadius" Value="20" />
+            <Setter Property="HeightRequest" Value="40" />
+            <Setter Property="TextColor" Value="White" />
         </Style>
         <Style TargetType="Label">
             <Setter Property="FontAttributes" Value="Bold" />
@@ -30,13 +35,13 @@
                 AbsoluteLayout.LayoutBounds="0,0,1,1"
                 AbsoluteLayout.LayoutFlags="All">
                 <StackLayout Orientation="Horizontal">
-                    <Label Text="Plaque" VerticalOptions="Center" />
+                    <Label Text="{i18n:Translate Plaque}" VerticalOptions="Center" />
                     <Entry
                         HorizontalOptions="FillAndExpand"
-                        Placeholder="Enter plaque..."
+                        Placeholder="{i18n:Translate PlaquePlaceHolder}"
                         Text="{Binding Plaque}"
                         VerticalOptions="Center" />
-                    <Button Text="Check Plaque" />
+                    <Button Text="{i18n:Translate CheckPlaque}" />
                 </StackLayout>
                 <rating:SfRating
                     Margin="0,5"
@@ -52,17 +57,23 @@
                             UnRatedFill="{StaticResource ColorSecondary}" />
                     </rating:SfRating.RatingSettings>
                 </rating:SfRating>
-                <Label
-                    FontSize="Large"
-                    HorizontalOptions="Center"
-                    Text="{Binding Taxi.Qualification, StringFormat='Qualification: {0:N2}'}" />
+                <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="Large"
+                        Text="{i18n:Translate Qualification}" />
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="Large"
+                        Text="{Binding Taxi.Qualification, StringFormat='{0:N2}'}" />
+                </StackLayout>
             </StackLayout>
             <StackLayout Orientation="Horizontal">
-                <Label Text="Number of trips:" />
+                <Label Text="{i18n:Translate NumberOfTrips}" />
                 <Label Text="{Binding Taxi.NumberOfTrips, StringFormat='{0:N0}'}" />
             </StackLayout>
             <StackLayout Orientation="Horizontal">
-                <Label Text="Driver:" />
+                <Label Text="{i18n:Translate Driver}" />
                 <Label Text="{Binding Taxi.User.FullName, StringFormat='{0:N0}'}" />
             </StackLayout>
             <Grid>
@@ -75,9 +86,18 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="48" />
                 </Grid.ColumnDefinitions>
-                <Label Grid.Column="0" Text="Start Date" />
-                <Label Grid.Column="1" Text="Score" />
-                <Label Grid.Column="2" Text="Remarks" />
+                <Label
+                    Grid.Column="0"
+                    FontAttributes="Bold"
+                    Text="{i18n:Translate StartDate}" />
+                <Label
+                    Grid.Column="1"
+                    FontAttributes="Bold"
+                    Text="{i18n:Translate Score}" />
+                <Label
+                    Grid.Column="2"
+                    FontAttributes="Bold"
+                    Text="{i18n:Translate Remarks}" />
             </Grid>
 
             <CollectionView ItemsSource="{Binding Trips}">
@@ -118,7 +138,7 @@
             </CollectionView>
         </StackLayout>
         <busyindicator:SfBusyIndicator
-            Title="Loading..."
+            Title="{i18n:Translate Loading}"
             AbsoluteLayout.LayoutBounds=".5,.5,.5,.5"
             AbsoluteLayout.LayoutFlags="All"
             AnimationType="HorizontalPulsingBox"
