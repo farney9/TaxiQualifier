@@ -32,6 +32,8 @@ namespace Taxi.Web.Helpers
             };
         }
 
+
+
         public TaxiResponse ToTaxiResponse(TaxiEntity taxiEntity)
         {
             return new TaxiResponse
@@ -63,7 +65,7 @@ namespace Taxi.Web.Helpers
                 User = ToUserResponse(taxiEntity.User)
             };
         }
-        private UserResponse ToUserResponse(UserEntity user)
+        public UserResponse ToUserResponse(UserEntity user)
         {
             if (user == null)
             {
