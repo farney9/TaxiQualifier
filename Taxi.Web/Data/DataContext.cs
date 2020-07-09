@@ -14,6 +14,10 @@ namespace Taxi.Web.Data
         {
         }
 
+        public DbSet<UserGroupDetailEntity> UserGroupDetails { get; set; }
+
+        public DbSet<UserGroupRequestEntity> UserGroupRequests { get; set; }
+
         public DbSet<TaxiEntity> Taxis { get; set; }
         
         public DbSet<TripEntity> Trips { get; set; }

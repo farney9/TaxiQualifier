@@ -14,5 +14,8 @@ namespace Taxi.Web.Helpers
 
         List<TripResponseWithTaxi> ToTripResponse(List<TripEntity> tripEntities);
 
+        List<UserGroupDetailResponse> ToUserGroupResponse(List<UserGroupDetailEntity> users);
+
+
     }
 }

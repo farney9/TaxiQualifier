@@ -25,12 +25,50 @@ namespace Taxi.Web.Data
         {
             await _dataContext.Database.EnsureCreatedAsync();
             await CheckRolesAsync();
-            var admin = await CheckUserAsync("1010", "Farney", "Jimenez", "farney9@gmail.com", "315 258 4641", "Calle Luna Calle Sol", UserType.Admin);
-            var driver = await CheckUserAsync("2020", "Farney", "Jimenez", "farney9@outlook.com", "315 258 4641", "Carrera 58 # 57 - 06 Piso 4", UserType.Driver);
-            var user1 = await CheckUserAsync("3030", "Farney", "Jimenez", "fcybercafe@gmail.com", "315 258 4641", "Calle 96B sur # 55-102", UserType.User);
-            var user2 = await CheckUserAsync("4040", "Farney", "Jimenez ITM", "farneyjimenez178518@correo.itm.edu.co", "350 634 2747", "Carrera 20 # 2 Sur 240", UserType.User);
+            await CheckUserAsync("1010", "Farney", "Jimenez", "farney9@gmail.com", "315 258 4641", "Calle Luna Calle Sol", UserType.Admin);
+            UserEntity driver = await CheckUserAsync("2020", "Farney", "Jimenez", "farney9@outlook.com", "315 258 4641", "Carrera 58 # 57 - 06 Piso 4", UserType.Driver);
+            UserEntity user1 = await CheckUserAsync("3030", "Farney", "Jimenez", "fcybercafe@gmail.com", "315 258 4641", "Calle 96B sur # 55-102", UserType.User);
+            UserEntity user2 = await CheckUserAsync("4040", "Andrea", "Garcia", "andreita@yopmail.com", "300 425 1478", "carrera 55 # 24 - 113 Apto 505", UserType.User);
+            UserEntity user3 = await CheckUserAsync("5050", "Camila", "Cifuentes", "camila@yopmail.com", "350 634 2747", "Calle Luna Calle Sol", UserType.User);
+            UserEntity user4 = await CheckUserAsync("6060", "Sandra", "Usuga", "sandra@yopmail.com", "350 634 2747", "Calle Luna Calle Sol", UserType.User);
+            UserEntity user5 = await CheckUserAsync("7070", "Luisa", "Marin", "luisa@yopmail.com", "350 634 2747", "Calle Luna Calle Sol", UserType.User);
+
+            //await CheckUserAsync("4040", "Farney", "Jimenez ITM", "farneyjimenez178518@correo.itm.edu.co", "350 634 2747", "Carrera 20 # 2 Sur 240", UserType.User);
             await CheckTaxisAsync(driver, user1, user2);
+            await CheckUserGroups(user1, user2, user3, user4, user5);
         }
+
+        private async Task CheckUserGroups(UserEntity user1, UserEntity user2, UserEntity user3, UserEntity user4, UserEntity user5)
+        {
+            if (!_dataContext.UserGroups.Any())
+            {
+                _dataContext.UserGroups.Add(new UserGroupEntity
+                {
+                    User = user1,
+                    Users = new List<UserGroupDetailEntity>
+                    {
+                        new UserGroupDetailEntity { User = user2 },
+                        new UserGroupDetailEntity { User = user3 },
+                        new UserGroupDetailEntity { User = user4 },
+                        new UserGroupDetailEntity { User = user5 }
+                    }
+                });
+
+                _dataContext.UserGroups.Add(new UserGroupEntity
+                {
+                    User = user2,
+                    Users = new List<UserGroupDetailEntity>
+                    {
+                        new UserGroupDetailEntity { User = user1 },
+                        new UserGroupDetailEntity { User = user3 },
+                        new UserGroupDetailEntity { User = user4 }
+                    }
+                });
+
+                await _dataContext.SaveChangesAsync();
+            }
+        }
+
 
         private async Task<UserEntity> CheckUserAsync(
             string document,
