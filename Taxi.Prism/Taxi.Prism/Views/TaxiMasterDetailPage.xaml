@@ -3,8 +3,6 @@
     x:Class="Taxi.Prism.Views.TaxiMasterDetailPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-    xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     xmlns:prism="http://prismlibrary.com"
     ios:Page.UseSafeArea="true"
@@ -35,46 +33,12 @@
 
             </ContentPage.Padding>
             <StackLayout Padding="20">
-                <RelativeLayout>
-                    <Image
-                        x:Name="Logo"
-                        HeightRequest="150"
-                        HorizontalOptions="Center"
-                        RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
-                                                                          Property=X,
-                                                                          Factor=1,
-                                                                          Constant=60}"
-                        Source="taxi" />
-                    <ffimageloading:CachedImage
-                        x:Name="Picture"
-                        Margin="5"
-                        Aspect="AspectFit"
-                        CacheDuration="50"
-                        HeightRequest="120"
-                        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView,
-                                                                          ElementName=Logo,
-                                                                          Property=Y,
-                                                                          Factor=1,
-                                                                          Constant=30}"
-                        RetryCount="3"
-                        RetryDelay="600"
-                        Source="{Binding User.PictureFullPath}"
-                        WidthRequest="120">
-                        <ffimageloading:CachedImage.Transformations>
-                            <fftransformations:CircleTransformation />
-                        </ffimageloading:CachedImage.Transformations>
-                    </ffimageloading:CachedImage>
-                    <Label
-                        FontAttributes="Bold"
-                        FontSize="Large"
-                        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView,
-                                                                          ElementName=Picture,
-                                                                          Property=Y,
-                                                                          Factor=1,
-                                                                          Constant=110}"
-                        Text="{Binding User.FullName}"
-                        TextColor="Black" />
-                </RelativeLayout>
+                <Image HeightRequest="150" Source="taxi" />
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="Large"
+                    Text="{Binding User.FullName}"
+                    TextColor="Black" />
 
                 <ListView>
                     <ListView.ItemTemplate>

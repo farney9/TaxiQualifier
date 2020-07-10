@@ -5,7 +5,6 @@ using Taxi.Common.Helpers;
 using Taxi.Common.Models;
 using Taxi.Common.Services;
 using Taxi.Prism.Helpers;
-using Taxi.Prism.Views;
 
 namespace Taxi.Prism.ViewModels
 {
@@ -26,8 +25,6 @@ namespace Taxi.Prism.ViewModels
             _navigationService = navigationService;
             _apiService = apiService;
         }
-
-
 
         public DelegateCommand LoginCommand => _loginCommand ?? (_loginCommand = new DelegateCommand(LoginAsync));
 
@@ -125,9 +122,8 @@ namespace Taxi.Prism.ViewModels
 
         }
 
-        private async void RegisterAsync()
+        private void RegisterAsync()
         {
-            await _navigationService.NavigateAsync(nameof(RegisterPage));
         }
     }
 }
