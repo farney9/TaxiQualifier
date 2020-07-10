@@ -1,6 +1,7 @@
 ﻿using Prism;
 using Prism.Ioc;
 using Syncfusion.Licensing;
+using Taxi.Common.Helpers;
 using Taxi.Common.Services;
 using Taxi.Prism.ViewModels;
 using Taxi.Prism.Views;
