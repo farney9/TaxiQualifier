@@ -151,7 +151,7 @@
     <value>El usuario ya pertenece a su grupo.</value>
   </data>
   <data name="RequestJoinGroupSubject" xml:space="preserve">
-    <value>Solicitu  de unirse a un grupo</value>
+    <value>Solicitud  de unirse a un grupo</value>
   </data>
   <data name="TheUser" xml:space="preserve">
     <value>El usuario</value>

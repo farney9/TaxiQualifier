@@ -103,11 +103,14 @@ namespace Taxi.Web.Controllers.API
                 token = userGroupRequest.Token
             }, protocol: HttpContext.Request.Scheme);
 
-            Response response = _mailHelper.SendMail(request.Email, Resource.RequestJoinGroupSubject, $"<h1>{Resource.RequestJoinGroupSubject}</h1>" +
-                $"{Resource.TheUser}: {proposalUser.FullName} ({proposalUser.Email}), {Resource.RequestJoinGroupBody}" +
-                $"</hr></br></br>{Resource.WishToAccept} <a href = \"{linkConfirm}\">{Resource.Confirm}</a>" +
-                $"</hr></br></br>{Resource.WishToReject} <a href = \"{linkReject}\">{Resource.Reject}</a>");
-
+            Response response = _mailHelper.SendMail(
+                request.Email, 
+                Resource.RequestJoinGroupSubject, 
+                $"<h1>{Resource.RequestJoinGroupSubject}</h1>" +
+                $"<hr><br><br>{Resource.TheUser}: {proposalUser.FullName} ({proposalUser.Email}), {Resource.RequestJoinGroupBody}" +
+                $"<br>{Resource.WishToAccept} <a href = \"{linkConfirm}\">{Resource.Confirm}</a> <br>" +
+                $"{Resource.WishToReject} <a href = \"{linkReject}\">{Resource.Reject}</a>");
+            
             if (!response.IsSuccess)
             {
                 return BadRequest(response.Message);

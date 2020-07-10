@@ -105,8 +105,7 @@ namespace Taxi.Web.Controllers
             }
 
             UserGroupRequestEntity userGroupRequest = await _context
-                .UserGroupRequests.FirstOrDefaultAsync(ugr => ugr.Id == requestId &&
-                                                        ugr.Token == new Guid(token));
+                .UserGroupRequests.FirstOrDefaultAsync(ugr => ugr.Id == requestId && ugr.Token == new Guid(token));
             if (userGroupRequest == null)
             {
                 return NotFound();
