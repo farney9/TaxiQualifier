@@ -15,6 +15,7 @@ namespace Taxi.Common.Services
 
         Task<Response> RegisterUserAsync(string urlBase, string servicePrefix, string controller, UserRequest userRequest);
 
+        Task<Response> RecoverPasswordAsync(string urlBase, string servicePrefix, string controller, EmailRequest emailRequest);
 
     }
 }
