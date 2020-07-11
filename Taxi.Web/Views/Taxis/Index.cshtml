@@ -50,14 +50,15 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="/js/deleteDialog.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {
             $('.table').DataTable({
                 "dom": "<'row'<'col-sm-12'B>>" +
-                        "<'row'<'col-sm-6'l ><'col-sm-6'f>> " +
-                        "<'row'<'col-sm-12'tr>>" +
-                        "<'row'<'col-sm-5'i><'col-sm-7'p>>",
+                    "<'row'<'col-sm-6'l ><'col-sm-6'f>> " +
+                    "<'row'<'col-sm-12'tr>>" +
+                    "<'row'<'col-sm-5'i><'col-sm-7'p>>",
                 buttons: [
                     {
                         extend: 'copy',
@@ -68,20 +69,12 @@
                     'print'
                 ],
                 //dom: 'Bfrtip',
-                lengthMenu: [[ 5, 10, 25, 50, -1], [ 5, 10, 25, 50, "All"]]
+                lengthMenu: [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]]
 
             });
 
             // Delete item
-            var item_to_delete;
-
-            $('.deleteItem').click((e) => {
-                item_to_delete = e.currentTarget.dataset.id;
-            });
-
-            $("#btnYesDelete").click(function () {
-                window.location.href = '/Taxis/Delete/' + item_to_delete;
-            });
+            sc_deleteDialog.openModal('deleteItem', true, 'btnYesDelete', '/Taxis/Delete/', false);
         });
     </script>
 }

@@ -50,7 +50,7 @@
                         Margin="5"
                         Aspect="AspectFit"
                         CacheDuration="50"
-                        HeightRequest="120"
+                        HeightRequest="115"
                         RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView,
                                                                           ElementName=Logo,
                                                                           Property=Y,
@@ -59,7 +59,7 @@
                         RetryCount="3"
                         RetryDelay="600"
                         Source="{Binding User.PictureFullPath}"
-                        WidthRequest="120">
+                        WidthRequest="115">
                         <ffimageloading:CachedImage.Transformations>
                             <fftransformations:CircleTransformation />
                         </ffimageloading:CachedImage.Transformations>
