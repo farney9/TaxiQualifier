@@ -29,7 +29,10 @@
             HasZoomEnabled="True"
             MapType="Street" />
         <StackLayout Padding="5">
-            <Button Text="{i18n:Translate StartTrip}" />
+            <Button
+                Margin="10,0"
+                Command="{Binding StartTripCommand}"
+                Text="{i18n:Translate StartTrip}" />
         </StackLayout>
     </StackLayout>
 
