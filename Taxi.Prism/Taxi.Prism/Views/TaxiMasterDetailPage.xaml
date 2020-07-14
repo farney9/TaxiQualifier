@@ -60,6 +60,9 @@
                         RetryDelay="600"
                         Source="{Binding User.PictureFullPath}"
                         WidthRequest="115">
+                        <ffimageloading:CachedImage.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ModifyUserCommand}" />
+                        </ffimageloading:CachedImage.GestureRecognizers>
                         <ffimageloading:CachedImage.Transformations>
                             <fftransformations:CircleTransformation />
                         </ffimageloading:CachedImage.Transformations>

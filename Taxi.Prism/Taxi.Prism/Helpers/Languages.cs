@@ -14,6 +14,12 @@ namespace Taxi.Prism.Helpers
             DependencyService.Get<ILocalize>().SetLocale(ci);
         }
 
+        public static string UserUpdated => Resource.UserUpdated;
+
+        public static string Save => Resource.Save;
+
+        public static string ChangePassword => Resource.ChangePassword;
+
         public static string PasswordRecover => Resource.PasswordRecover;
 
         public static string ForgotPassword => Resource.ForgotPassword;
