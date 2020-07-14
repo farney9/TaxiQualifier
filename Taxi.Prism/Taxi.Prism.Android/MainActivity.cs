@@ -29,6 +29,7 @@ namespace Taxi.Prism.Droid
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init(true);
             new SfBusyIndicatorRenderer();
             new SfRatingRenderer();
+            Xamarin.FormsMaps.Init(this, bundle);
             LoadApplication(new App(new AndroidInitializer()));
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)

@@ -342,4 +342,16 @@
   <data name="ConfirmNewPasswordError2" xml:space="preserve">
     <value>Le nouveau mot de passe et le mot de passe de confirmation ne correspondent pas</value>
   </data>
+  <data name="Source" xml:space="preserve">
+    <value>Source</value>
+  </data>
+  <data name="EndTrip" xml:space="preserve">
+    <value>BANDE</value>
+  </data>
+  <data name="GeolocationError" xml:space="preserve">
+    <value>Il n&amp;#39;est pas possible d&amp;#39;obtenir votre adresse actuelle, veuillez réessayer.</value>
+  </data>
+  <data name="ConfirmAddress" xml:space="preserve">
+    <value>Confirmez votre adresse.</value>
+  </data>
 </root>
