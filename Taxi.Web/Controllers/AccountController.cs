@@ -20,7 +20,7 @@ namespace Taxi.Web.Controllers
     public class AccountController : Controller
     {
         private readonly IUserHelper _userHelper;
-        private readonly IImageHelper _imageHelper;
+        private readonly IBlobHelper _blobHelper;
         private readonly ICombosHelper _combosHelper;
         private readonly IConfiguration _configuration;
         private readonly IMailHelper _mailHelper;
@@ -28,14 +28,14 @@ namespace Taxi.Web.Controllers
 
         public AccountController(
             IUserHelper userHelper,
-            IImageHelper imageHelper,
+            IBlobHelper blobHelper,
             ICombosHelper combosHelper,
             IConfiguration configuration,
             IMailHelper mailHelper,
             DataContext contex)
         {
             _userHelper = userHelper;
-            _imageHelper = imageHelper;
+            _blobHelper = blobHelper;
             _combosHelper = combosHelper;
             _configuration = configuration;
             _mailHelper = mailHelper;
@@ -328,7 +328,7 @@ namespace Taxi.Web.Controllers
 
                 if (model.PictureFile != null)
                 {
-                    path = await _imageHelper.UploadImageAsync(model.PictureFile, "Users");
+                    path = await _blobHelper.UploadBlobAsync(model.PictureFile, "users");
                 }
 
                 UserEntity user = await _userHelper.AddUserAsync(model, path);
@@ -390,7 +390,7 @@ namespace Taxi.Web.Controllers
 
                 if (model.PictureFile != null)
                 {
-                    path = await _imageHelper.UploadImageAsync(model.PictureFile, "Users");
+                    path = await _blobHelper.UploadBlobAsync(model.PictureFile, "users");
                 }
 
                 UserEntity user = await _userHelper.GetUserAsync(User.Identity.Name);

@@ -5,6 +5,8 @@ namespace Taxi.Common.Services
 {
     public interface IApiService
     {
+        Task<Response> AddTripDetailsAsync(string urlBase, string servicePrefix, string controller, TripDetailsRequest model, string tokenType, string accessToken);
+
         Task<Response> NewTripAsync(string urlBase, string servicePrefix, string controller, TripRequest model, string tokenType, string accessToken);
 
         Task<Response> ChangePasswordAsync(string urlBase, string servicePrefix, string controller, ChangePasswordRequest changePasswordRequest, string tokenType, string accessToken);
@@ -13,7 +15,7 @@ namespace Taxi.Common.Services
 
         Task<Response> GetTaxiAsync(string plaque, string urlBase, string servicePrefix, string controller);
 
-        Task<bool> CheckConnectionAsync(string url);
+        bool CheckConnection();
 
         Task<Response> GetTokenAsync(string urlBase, string servicePrefix, string controller, TokenRequest request);
 

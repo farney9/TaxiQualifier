@@ -28,7 +28,8 @@ namespace Taxi.Common.Models
 
         public string PictureFullPath => string.IsNullOrEmpty(PicturePath)
             ? "https://taxifar.azurewebsites.net/images/noimage.png"
-            : $"https://taxifar.azurewebsites.net{PicturePath.Substring(1)}";
+            : $"https://taxifar.blob.core.windows.net/users/{PicturePath}";
+
 
     }
 }

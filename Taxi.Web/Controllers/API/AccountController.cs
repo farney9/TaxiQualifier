@@ -20,21 +20,24 @@ namespace Taxi.Web.Controllers.API
         private readonly DataContext _dataContext;
         private readonly IUserHelper _userHelper;
         private readonly IMailHelper _mailHelper;
-        private readonly IImageHelper _imageHelper;
         private readonly IConverterHelper _converterHelper;
+        private readonly IImageHelper _imageHelper;
+        private readonly IBlobHelper _blobHelper;
 
         public AccountController(
             DataContext dataContext,
             IUserHelper userHelper,
             IMailHelper mailHelper,
+            IConverterHelper converterHelper,
             IImageHelper imageHelper,
-            IConverterHelper converterHelper)
+            IBlobHelper blobHelper)
         {
             _dataContext = dataContext;
             _userHelper = userHelper;
             _mailHelper = mailHelper;
-            _imageHelper = imageHelper;
             _converterHelper = converterHelper;
+            _imageHelper = imageHelper;
+            _blobHelper = blobHelper;
         }
 
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]

@@ -3,13 +3,16 @@ using Prism.Commands;
 using Prism.Navigation;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Timers;
 using Taxi.Common.Helpers;
 using Taxi.Common.Models;
 using Taxi.Common.Services;
 using Taxi.Prism.Helpers;
 using Taxi.Prism.Views;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 
@@ -29,6 +32,12 @@ namespace Taxi.Prism.ViewModels
         private DelegateCommand _startTripCommand;
         private TripResponse _tripResponse;
         private Position _position;
+        private UserResponse _user;
+        private TokenResponse _token;
+        private string _url;
+        private Timer _timer;
+        private Geocoder _geoCoder;
+        private TripDetailsRequest _tripDetailsRequest;
 
         public StartTripPageViewModel(INavigationService navigationService, IGeolocatorService geolocatorService, IApiService apiService)
             : base(navigationService)
@@ -36,6 +45,7 @@ namespace Taxi.Prism.ViewModels
             _navigationService = navigationService;
             _geolocatorService = geolocatorService;
             _apiService = apiService;
+            _tripDetailsRequest = new TripDetailsRequest { TripDetails = new List<TripDetailRequest>() };
             Title = Languages.StartTrip;
             ButtonLabel = Languages.StartTrip;
             IsEnabled = true;
@@ -81,19 +91,28 @@ namespace Taxi.Prism.ViewModels
 
         private async void LoadSourceAsync()
         {
+            IsEnabled = false;
             await _geolocatorService.GetLocationAsync();
-            if (_geolocatorService.Latitude != 0 && _geolocatorService.Longitude != 0)
-            {
-                _position = new Position(_geolocatorService.Latitude, _geolocatorService.Longitude);
-                Geocoder geoCoder = new Geocoder();
-                IEnumerable<string> sources = await geoCoder.GetAddressesForPositionAsync(_position);
-                List<string> addresses = new List<string>(sources);
 
-                if (addresses.Count > 0)
-                {
-                    Source = addresses[0];
-                }
+            if (_geolocatorService.Latitude == 0 && _geolocatorService.Longitude == 0)
+            {
+                IsEnabled = true;
+                await App.Current.MainPage.DisplayAlert(Languages.Error, Languages.GeolocationError, Languages.Accept);
+                await _navigationService.GoBackAsync();
+                return;
             }
+
+            _position = new Position(_geolocatorService.Latitude, _geolocatorService.Longitude);
+            Geocoder geoCoder = new Geocoder();
+            IEnumerable<string> sources = await geoCoder.GetAddressesForPositionAsync(_position);
+            List<string> addresses = new List<string>(sources);
+
+            if (addresses.Count > 1)
+            {
+                Source = addresses[0];
+            }
+
+            IsEnabled = true;
         }
 
         private async void StartTripAsync()
@@ -108,8 +127,7 @@ namespace Taxi.Prism.ViewModels
             IsEnabled = false;
 
             string url = App.Current.Resources["UrlAPI"].ToString();
-            bool connection = await _apiService.CheckConnectionAsync(url);
-            if (!connection)
+            if (_apiService.CheckConnection())
             {
                 IsRunning = false;
                 IsEnabled = true;
@@ -145,7 +163,73 @@ namespace Taxi.Prism.ViewModels
             StartTripPage.GetInstance().AddPin(_position, Source, Languages.StartTrip, PinType.Place);
             IsRunning = false;
             IsEnabled = true;
+            _timer = new Timer
+            {
+                Interval = 1000
+            };
+
+            _timer.Elapsed += Timer_Elapsed;
+            _timer.Start();
         }
+
+        private async void Timer_Elapsed(object sender, ElapsedEventArgs e)
+        {
+            await _geolocatorService.GetLocationAsync();
+            if (_geolocatorService.Latitude == 0 && _geolocatorService.Longitude == 0)
+            {
+                return;
+            }
+
+            Position previousPosition = new Position(_position.Latitude, _position.Longitude);
+            _position = new Position(_geolocatorService.Latitude, _geolocatorService.Longitude);
+            double distance = GeoHelper.GetDistance(previousPosition, _position, UnitOfLength.Kilometers);
+
+            if (distance < 0.003 || double.IsNaN(distance))
+            {
+                return;
+            }
+
+            MainThread.BeginInvokeOnMainThread(() =>
+            {
+                StartTripPage.GetInstance().DrawLine(previousPosition, _position);
+            });
+
+            _tripDetailsRequest.TripDetails.Add(new TripDetailRequest
+            {
+                Latitude = _position.Latitude,
+                Longitude = _position.Longitude,
+                TripId = _tripResponse.Id
+            });
+
+            if (_tripDetailsRequest.TripDetails.Count > 9)
+            {
+                SendTripDetailsAsync();
+            }
+        }
+
+        private async Task SendTripDetailsAsync()
+        {
+            TripDetailsRequest tripDetailsRequestCloned = CloneTripDetailsRequest(_tripDetailsRequest);
+            _tripDetailsRequest.TripDetails.Clear();
+            await _apiService.AddTripDetailsAsync(_url, "/api", "/Trips/AddTripDetails", tripDetailsRequestCloned, "bearer", _token.Token);
+        }
+
+        private TripDetailsRequest CloneTripDetailsRequest(TripDetailsRequest tripDetailsRequest)
+        {
+            TripDetailsRequest tripDetailsRequestCloned = new TripDetailsRequest
+            {
+                TripDetails = tripDetailsRequest.TripDetails.Select(d => new TripDetailRequest
+                {
+                    Address = d.Address,
+                    Latitude = d.Latitude,
+                    Longitude = d.Longitude,
+                    TripId = d.TripId
+                }).ToList()
+            };
+
+            return tripDetailsRequestCloned;
+        }
+
 
         private async Task<bool> ValidateDataAsync()
         {

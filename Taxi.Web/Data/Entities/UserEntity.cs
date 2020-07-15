@@ -26,6 +26,12 @@ namespace Taxi.Web.Data.Entities
         public string Address { get; set; }
 
         [Display(Name = "Picture")]
+        public string PictureFullPath => string.IsNullOrEmpty(PicturePath)
+            ? "https://taxifar.azurewebsites.net/images/noimage.png"
+            : $"https://taxifar.blob.core.windows.net/users/{PicturePath}";
+
+
+        [Display(Name = "Picture")]
         public string PicturePath { get; set; }
 
         [Display(Name = "User Type")]
