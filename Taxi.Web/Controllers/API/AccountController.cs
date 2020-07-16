@@ -21,7 +21,6 @@ namespace Taxi.Web.Controllers.API
         private readonly IUserHelper _userHelper;
         private readonly IMailHelper _mailHelper;
         private readonly IConverterHelper _converterHelper;
-        private readonly IImageHelper _imageHelper;
         private readonly IBlobHelper _blobHelper;
 
         public AccountController(
@@ -29,14 +28,12 @@ namespace Taxi.Web.Controllers.API
             IUserHelper userHelper,
             IMailHelper mailHelper,
             IConverterHelper converterHelper,
-            IImageHelper imageHelper,
             IBlobHelper blobHelper)
         {
             _dataContext = dataContext;
             _userHelper = userHelper;
             _mailHelper = mailHelper;
             _converterHelper = converterHelper;
-            _imageHelper = imageHelper;
             _blobHelper = blobHelper;
         }
 
@@ -138,7 +135,7 @@ namespace Taxi.Web.Controllers.API
             string picturePath = string.Empty;
             if (request.PictureArray != null && request.PictureArray.Length > 0)
             {
-                picturePath = _imageHelper.UploadImage(request.PictureArray, "Users");
+                picturePath = await _blobHelper.UploadBlobAsync(request.PictureArray, "users");
             }
 
             user = new UserEntity
@@ -240,7 +237,7 @@ namespace Taxi.Web.Controllers.API
             string picturePath = userEntity.PicturePath;
             if (request.PictureArray != null && request.PictureArray.Length > 0)
             {
-                picturePath = _imageHelper.UploadImage(request.PictureArray, "Users");
+                picturePath = await _blobHelper.UploadBlobAsync(request.PictureArray, "users");
             }
 
             userEntity.FirstName = request.FirstName;

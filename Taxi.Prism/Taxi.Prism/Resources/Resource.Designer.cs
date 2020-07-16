@@ -106,11 +106,29 @@ namespace Taxi.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Approximate value.
+        /// </summary>
+        public static string ApproximateValue {
+            get {
+                return ResourceManager.GetString("ApproximateValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
         public static string Cancel {
             get {
                 return ResourceManager.GetString("Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure to cancel the trip?.
+        /// </summary>
+        public static string CancelTripConfirm {
+            get {
+                return ResourceManager.GetString("CancelTripConfirm", resourceCulture);
             }
         }
         
@@ -133,11 +151,92 @@ namespace Taxi.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Comment.
+        /// </summary>
+        public static string Comment {
+            get {
+                return ResourceManager.GetString("Comment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Very good service.
+        /// </summary>
+        public static string Comment1 {
+            get {
+                return ResourceManager.GetString("Comment1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Very friendly driver.
+        /// </summary>
+        public static string Comment2 {
+            get {
+                return ResourceManager.GetString("Comment2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Clean taxi.
+        /// </summary>
+        public static string Comment3 {
+            get {
+                return ResourceManager.GetString("Comment3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dirty or spoiled taxi.
+        /// </summary>
+        public static string Comment4 {
+            get {
+                return ResourceManager.GetString("Comment4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bad driver.
+        /// </summary>
+        public static string Comment5 {
+            get {
+                return ResourceManager.GetString("Comment5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Charge higher than expected.
+        /// </summary>
+        public static string Comment6 {
+            get {
+                return ResourceManager.GetString("Comment6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select a comment....
+        /// </summary>
+        public static string CommnetPlaceHolder {
+            get {
+                return ResourceManager.GetString("CommnetPlaceHolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Confirm your address..
         /// </summary>
         public static string ConfirmAddress {
             get {
                 return ResourceManager.GetString("ConfirmAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirmation.
+        /// </summary>
+        public static string Confirmation {
+            get {
+                return ResourceManager.GetString("Confirmation", resourceCulture);
             }
         }
         
@@ -214,6 +313,15 @@ namespace Taxi.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Distance traveled.
+        /// </summary>
+        public static string DistanceTraveled {
+            get {
+                return ResourceManager.GetString("DistanceTraveled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Document.
         /// </summary>
         public static string Document {
@@ -273,6 +381,15 @@ namespace Taxi.Prism.Resources {
         public static string EmailPlaceHolder {
             get {
                 return ResourceManager.GetString("EmailPlaceHolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to End date.
+        /// </summary>
+        public static string EndDate {
+            get {
+                return ResourceManager.GetString("EndDate", resourceCulture);
             }
         }
         
@@ -345,6 +462,15 @@ namespace Taxi.Prism.Resources {
         public static string FromGallery {
             get {
                 return ResourceManager.GetString("FromGallery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Generic comment.
+        /// </summary>
+        public static string GenericComment {
+            get {
+                return ResourceManager.GetString("GenericComment", resourceCulture);
             }
         }
         
@@ -430,6 +556,24 @@ namespace Taxi.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to My trip.
+        /// </summary>
+        public static string MyTrip {
+            get {
+                return ResourceManager.GetString("MyTrip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My trips.
+        /// </summary>
+        public static string MyTrips {
+            get {
+                return ResourceManager.GetString("MyTrips", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New password..
         /// </summary>
         public static string NewPassword {
@@ -462,6 +606,15 @@ namespace Taxi.Prism.Resources {
         public static string NewTrip {
             get {
                 return ResourceManager.GetString("NewTrip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No.
+        /// </summary>
+        public static string No {
+            get {
+                return ResourceManager.GetString("No", resourceCulture);
             }
         }
         
@@ -637,6 +790,15 @@ namespace Taxi.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You must enter trip qualification..
+        /// </summary>
+        public static string QualificationError {
+            get {
+                return ResourceManager.GetString("QualificationError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Register.
         /// </summary>
         public static string Register {
@@ -718,7 +880,7 @@ namespace Taxi.Prism.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Source.
+        ///   Looks up a localized string similar to Source:.
         /// </summary>
         public static string Source {
             get {
@@ -745,11 +907,29 @@ namespace Taxi.Prism.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Target:.
+        /// </summary>
+        public static string Target {
+            get {
+                return ResourceManager.GetString("Target", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Taxi History.
         /// </summary>
         public static string TaxiHistory {
             get {
                 return ResourceManager.GetString("TaxiHistory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time.
+        /// </summary>
+        public static string Time {
+            get {
+                return ResourceManager.GetString("Time", resourceCulture);
             }
         }
         
@@ -768,6 +948,15 @@ namespace Taxi.Prism.Resources {
         public static string UserUpdated {
             get {
                 return ResourceManager.GetString("UserUpdated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yes.
+        /// </summary>
+        public static string Yes {
+            get {
+                return ResourceManager.GetString("Yes", resourceCulture);
             }
         }
     }

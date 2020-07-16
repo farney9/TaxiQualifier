@@ -28,6 +28,11 @@
                 <Setter Property="TextColor" Value="{StaticResource ColorFontInverse}" />
             </Style>
 
+            <Style TargetType="Editor">
+                <Setter Property="BackgroundColor" Value="{StaticResource ColorFontInverse}" />
+            </Style>
+
+
             <Style TargetType="Label">
                 <Setter Property="TextColor" Value="{StaticResource ColorBlack}" />
             </Style>

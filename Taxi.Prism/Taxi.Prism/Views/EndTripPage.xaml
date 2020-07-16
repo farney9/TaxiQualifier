@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Taxi.Prism.Views.EndTripPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+    xmlns:i18n="clr-namespace:Taxi.Prism.Helpers"
+    xmlns:prism="http://prismlibrary.com"
+    xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
+    Title="{Binding Title}"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    BackgroundColor="{StaticResource ColorBackgroud}">
+
+    <AbsoluteLayout>
+        <StackLayout
+            Padding="5"
+            AbsoluteLayout.LayoutBounds="0,0,1,1"
+            AbsoluteLayout.LayoutFlags="All">
+            <ScrollView>
+                <StackLayout>
+                    <rating:SfRating
+                        Margin="0,5"
+                        HorizontalOptions="Center"
+                        Precision="Half"
+                        Value="{Binding Qualification}">
+                        <rating:SfRating.RatingSettings>
+                            <rating:SfRatingSettings RatedFill="{StaticResource ColorPrimary}" />
+                        </rating:SfRating.RatingSettings>
+                    </rating:SfRating>
+                    <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="Large"
+                            Text="{i18n:Translate Qualification}" />
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="Large"
+                            Text="{Binding Qualification, StringFormat='{0:N2}'}" />
+                    </StackLayout>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="3*" />
+                        </Grid.ColumnDefinitions>
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Text="{i18n:Translate GenericComment}"
+                            VerticalOptions="Center" />
+                        <Picker
+                            Title="{i18n:Translate CommnetPlaceHolder}"
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            ItemDisplayBinding="{Binding Name}"
+                            ItemsSource="{Binding Comments}"
+                            SelectedItem="{Binding Comment}" />
+
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Text="{i18n:Translate Comment}"
+                            VerticalOptions="Center" />
+                        <Editor
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            HeightRequest="150"
+                            Text="{Binding Remark}" />
+
+                        <Label
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            Text="{i18n:Translate DistanceTraveled}"
+                            VerticalOptions="Center" />
+                        <Label
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            FontAttributes="Bold"
+                            FontSize="Medium"
+                            Text="{Binding Distance, StringFormat='{0:N2}'}"
+                            VerticalTextAlignment="Center" />
+
+                        <Label
+                            Grid.Row="3"
+                            Grid.Column="0"
+                            Text="{i18n:Translate Time}"
+                            VerticalOptions="Center" />
+                        <Label
+                            Grid.Row="3"
+                            Grid.Column="1"
+                            FontAttributes="Bold"
+                            FontSize="Medium"
+                            Text="{Binding Time}"
+                            VerticalTextAlignment="Center" />
+
+                        <Label
+                            Grid.Row="4"
+                            Grid.Column="0"
+                            Text="{i18n:Translate ApproximateValue}"
+                            VerticalOptions="Center" />
+                        <Label
+                            Grid.Row="4"
+                            Grid.Column="1"
+                            FontAttributes="Bold"
+                            FontSize="Medium"
+                            Text="{Binding Value}"
+                            VerticalTextAlignment="Center" />
+                    </Grid>
+                </StackLayout>
+            </ScrollView>
+            <Button
+                Command="{Binding EndTripCommand}"
+                IsEnabled="{Binding IsEnabled}"
+                Text="{i18n:Translate EndTrip}"
+                VerticalOptions="EndAndExpand" />
+        </StackLayout>
+        <busyindicator:SfBusyIndicator
+            Title="{i18n:Translate Loading}"
+            AbsoluteLayout.LayoutBounds=".5,.5,.5,.5"
+            AbsoluteLayout.LayoutFlags="All"
+            AnimationType="Gear"
+            BackgroundColor="{StaticResource ColorAccent}"
+            HorizontalOptions="Center"
+            IsVisible="{Binding IsRunning}"
+            TextColor="{StaticResource ColorFontInverse}"
+            VerticalOptions="Center"
+            ViewBoxHeight="80"
+            ViewBoxWidth="80" />
+    </AbsoluteLayout>
+</ContentPage>

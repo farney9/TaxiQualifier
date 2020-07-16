@@ -343,7 +343,7 @@
     <value>Enter a new password</value>
   </data>
   <data name="Source" xml:space="preserve">
-    <value>Source</value>
+    <value>Source:</value>
   </data>
   <data name="EndTrip" xml:space="preserve">
     <value>End trip</value>
@@ -353,5 +353,68 @@
   </data>
   <data name="ConfirmAddress" xml:space="preserve">
     <value>Confirm your address.</value>
+  </data>
+  <data name="GenericComment" xml:space="preserve">
+    <value>Generic comment</value>
+  </data>
+  <data name="CommnetPlaceHolder" xml:space="preserve">
+    <value>Select a comment...</value>
+  </data>
+  <data name="Comment1" xml:space="preserve">
+    <value>Very good service</value>
+  </data>
+  <data name="Comment2" xml:space="preserve">
+    <value>Very friendly driver</value>
+  </data>
+  <data name="Comment3" xml:space="preserve">
+    <value>Clean taxi</value>
+  </data>
+  <data name="Comment4" xml:space="preserve">
+    <value>Dirty or spoiled taxi</value>
+  </data>
+  <data name="Comment5" xml:space="preserve">
+    <value>Bad driver</value>
+  </data>
+  <data name="Comment6" xml:space="preserve">
+    <value>Charge higher than expected</value>
+  </data>
+  <data name="Comment" xml:space="preserve">
+    <value>Comment</value>
+  </data>
+  <data name="DistanceTraveled" xml:space="preserve">
+    <value>Distance traveled</value>
+  </data>
+  <data name="Time" xml:space="preserve">
+    <value>Time</value>
+  </data>
+  <data name="ApproximateValue" xml:space="preserve">
+    <value>Approximate value</value>
+  </data>
+  <data name="QualificationError" xml:space="preserve">
+    <value>You must enter trip qualification.</value>
+  </data>
+  <data name="CancelTripConfirm" xml:space="preserve">
+    <value>Are you sure to cancel the trip?</value>
+  </data>
+  <data name="Confirmation" xml:space="preserve">
+    <value>Confirmation</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="MyTrip" xml:space="preserve">
+    <value>My trip</value>
+  </data>
+  <data name="MyTrips" xml:space="preserve">
+    <value>My trips</value>
+  </data>
+  <data name="EndDate" xml:space="preserve">
+    <value>End date</value>
+  </data>
+  <data name="Target" xml:space="preserve">
+    <value>Target:</value>
   </data>
 </root>

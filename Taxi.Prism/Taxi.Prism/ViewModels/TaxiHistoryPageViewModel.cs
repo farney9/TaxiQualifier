@@ -66,7 +66,7 @@ namespace Taxi.Prism.ViewModels
             IsRunning = true;
             IsShowStars = false;
             string url = App.Current.Resources["UrlAPI"].ToString();
-            if (_apiService.CheckConnection())
+            if (!_apiService.CheckConnection())
             {
                 IsRunning = false;
                 await App.Current.MainPage.DisplayAlert(
